@@ -16,9 +16,6 @@ const Main = () => {
       <h4 className="scroll-subtitle">🢘 countries with highest impact 🢚</h4>
       <div className="footer">
         <h4 className="main-subtitle">
-          Created with ❤ | Created with React & GitHub
-        </h4>
-        <h4 className="main-subtitle">
           <a href="https://github.com/Suraj-Gov/covid-19-stats">
             Link to the repo
           </a>
