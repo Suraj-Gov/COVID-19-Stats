@@ -8,7 +8,7 @@ const Main = () => {
     <div className="main-container">
       <h1 className="main-heading">COVID-19 Stats</h1>
       <h4 className="main-subtitle">
-        A COVID-19 stats webapp that&#39;s updated automatically.
+        A COVID-19 stats webapp that&#39;s updated daily.
       </h4>
       <div id="country-container">
         <TopCountries />
