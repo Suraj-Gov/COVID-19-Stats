@@ -8,12 +8,12 @@ const Main = () => {
     <div className="main-container">
       <h1 className="main-heading">COVID-19 Stats</h1>
       <h4 className="main-subtitle">
-        A COVID-19 stats webapp that&#39;s updated automatically.
+        A stats webapp that&#39;s updated automatically.
       </h4>
       <div id="country-container">
         <TopCountries />
       </div>
-      <h4 className="scroll-subtitle">🢘 countries with highest impact 🢚</h4>
+      <h4 className="scroll-subtitle">countries with highest impact</h4>
       <div className="footer">
         <h4 className="main-subtitle">
           <a href="https://github.com/Suraj-Gov/covid-19-stats">
