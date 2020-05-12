@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import TopCountries from "./topCountries";
+// import "./normalize.css";
+import Summary from "./Summary";
 
 const Main = () => {
   return (
@@ -10,10 +11,7 @@ const Main = () => {
       <h4 className="main-subtitle">
         A stats webapp that&#39;s updated automatically.
       </h4>
-      <div id="country-container">
-        <TopCountries />
-      </div>
-      <h4 className="scroll-subtitle">countries with highest impact</h4>
+      <Summary />
       <div className="footer">
         <h4 className="main-subtitle">
           <a href="https://github.com/Suraj-Gov/covid-19-stats">
