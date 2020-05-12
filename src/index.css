@@ -3,6 +3,7 @@
   margin: 0;
   box-sizing: border-box;
   color: #eeeeee;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 html {
@@ -30,17 +31,129 @@ option {
 .summary-container {
   position: relative;
   width: 90vw;
-  height: 15em;
+  height: 100%;
   background-color: #242424;
   left: 0;
   right: 0;
   margin: auto;
   margin-top: 1em;
   border-radius: 0.5em;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.summary-container > .date {
-  position: absolute;
-  bottom: 0.4rem;
-  right: 0.5rem;
+.summary-container > h1 {
+  margin: 4.5rem auto;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.summary-container > .summary-trio {
+  flex: 1;
+}
+
+.summary-container > .country-list {
+  flex: 1;
+}
+
+.summary-trio {
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem;
+  animation-name: fade-in;
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.42, 0.04, 0, 0.99);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.summary-trio > * {
+  margin: 0.2rem;
+  border-radius: 0.4rem;
+  flex: 1;
+  height: 10rem;
+  transition: 0.5s;
+  transition-timing-function: cubic-bezier(0.42, 0.04, 0, 0.99);
+}
+
+.summary-trio > *:hover {
+  flex: 2;
+}
+
+.summary-trio > .confirmed {
+  background-color: rgba(255, 179, 15, 0.63);
+}
+
+.summary-trio > .recovered {
+  background-color: rgba(252, 222, 156, 0.623);
+}
+
+.summary-trio > .deceased {
+  background-color: rgba(213, 87, 59, 0.637);
+}
+
+.summary-trio > * > .heading {
+  text-align: center;
+  margin: 0.4rem;
+  text-transform: uppercase;
+  padding: 0.2rem;
+  border-radius: 0.3rem;
+  font-weight: 700;
+}
+
+.summary-trio > .confirmed > .heading {
+  background-color: rgba(255, 179, 15, 0.8);
+  color: rgb(77, 55, 8);
+}
+
+.summary-trio > .recovered > .heading {
+  background-color: rgba(252, 222, 156, 0.803);
+  color: rgb(94, 82, 57);
+}
+
+.summary-trio > .deceased > .heading {
+  background-color: rgba(213, 87, 59, 0.807);
+  color: rgb(56, 23, 16);
+}
+
+.summary-trio > * > .total {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.summary-trio > * > .new {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-top: 0.4rem;
+  position: relative;
+}
+
+.summary-trio > * > .new > .plus {
+  font-size: 0.7rem;
+  position: relative;
+  top: -0.5rem;
+  color: rgba(255, 255, 255, 0.644);
+  left: 0rem;
+  padding: 0.1rem;
+}
+
+.country-list {
+  padding: 0.7rem;
+}
+
+.country-list > .country-dropdown {
+  appearance: none;
+  width: 100%;
+  line-height: normal;
+  background: #171717;
+  padding: 0.3rem;
+  border-radius: 0.3rem;
 }
