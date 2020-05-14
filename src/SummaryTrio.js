@@ -7,7 +7,7 @@ const SummaryTrio = (props) => {
         <p className="heading">Confirmed</p>
         <p className="total">{props.TotalConfirmed}</p>
         <p className="new">
-          <span className="plus">NEW</span>
+          <span className="plus">TODAY</span>
           {props.NewConfirmed}
         </p>
       </div>
@@ -15,7 +15,7 @@ const SummaryTrio = (props) => {
         <p className="heading">Recovered</p>
         <p className="total">{props.TotalRecovered}</p>
         <p className="new">
-          <span className="plus">NEW</span>
+          <span className="plus">TODAY</span>
           {props.NewRecovered}
         </p>
       </div>
@@ -23,7 +23,7 @@ const SummaryTrio = (props) => {
         <p className="heading">Deceased</p>
         <p className="total">{props.TotalDeaths}</p>
         <p className="new">
-          <span className="plus">NEW</span>
+          <span className="plus">TODAY</span>
           {props.NewDeaths}
         </p>
       </div>
