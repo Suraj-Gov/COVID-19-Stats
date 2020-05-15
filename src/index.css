@@ -1,71 +1,85 @@
-/* * {
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   color: #eeeeee;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Fira Sans", sans-serif;
 }
 
 html {
-  background: #121212;
-}
-
-select,
-option {
-  background-color: #161616;
+  background-color: #121212;
 }
 
 .main-container {
   margin: 1em;
 }
 
-.main-heading,
-.main-subtitle {
+.top-header {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 1em;
   text-align: center;
 }
 
+.main-heading {
+  font-size: 2.1em;
+  margin: 0.3em;
+  margin-bottom: 0.1em;
+}
+
 .main-subtitle {
-  margin-top: 0.5em;
+  font-size: 1em;
+  margin: 0.1em;
 }
 
 .main-panel {
-  position: relative;
-  width: 90vw;
-  height: 100%;
-  background-color: #242424;
-  left: 0;
-  right: 0;
-  margin: auto;
-  margin-top: 1em;
-  border-radius: 0.5em;
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
 }
 
-.main-panel > h1 {
-  margin: 4.5rem auto;
-  padding: 0 1em;
-  text-align: center;
-  text-transform: uppercase;
+@media only screen and (max-width: 900px) {
+  .main-panel {
+    flex-direction: column;
+  }
 }
 
-.main-panel > .summary-trio {
+@media only screen and (min-width: 900px) {
+  .main-panel > * {
+    margin: 1em;
+  }
+}
+
+.main-panel > h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 5em 0 15em 0;
+}
+
+.main-panel > * {
   flex: 1;
 }
 
-.main-panel > .top-16-countries-list {
+.global-summary {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.global-summary > * {
   flex: 1;
 }
 
 .summary-trio {
   display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
   flex-direction: row;
-  padding: 0.5rem;
-  animation-name: fade-in;
-  animation-duration: 1s;
-  margin: 0 inherit;
-  text-align: center;
-  animation-timing-function: cubic-bezier(0.42, 0.04, 0, 0.99);
+  animation: fade-in 0.5s ease-in-out;
 }
 
 @keyframes fade-in {
@@ -78,103 +92,116 @@ option {
 }
 
 .summary-trio > * {
-  margin: 0.2rem;
-  border-radius: 0.4rem;
-  flex: 1;
-  max-height: 15em;
-  max-width: 8em;
-  transition: 0.5s;
-  transition-timing-function: cubic-bezier(0.42, 0.04, 0, 0.99);
-}
-
-.summary-trio > *:hover {
-  flex: 2;
+  width: 6.5em;
+  height: inherit;
+  min-height: 10em;
+  border-radius: 0.4em;
 }
 
 .summary-trio > .confirmed {
-  background-color: rgb(204, 139, 0);
+  background-color: #0d71ac;
+  /* box-shadow: -4px 4px #814e40; */
 }
 
 .summary-trio > .recovered {
-  background-color: rgb(84, 173, 103);
+  background-color: #1eb2a6;
+  /* box-shadow: 0px 4px #2a5753; */
 }
 
 .summary-trio > .deceased {
-  background-color: rgb(165, 63, 40);
+  background-color: #c45b5b;
+  /* box-shadow: 4px 4px #1b262c; */
 }
 
 .summary-trio > * > .heading {
-  text-align: center;
-  margin: 0.4rem;
   text-transform: uppercase;
-  padding: 0.2rem;
-  border-radius: 0.3rem;
-  font-weight: 700;
-}
-
-.summary-trio > .confirmed > .heading {
-  background-color: rgba(255, 230, 0, 0.6);
-  color: rgb(112, 77, 0);
-}
-
-.summary-trio > .recovered > .heading {
-  background-color: rgba(119, 255, 149, 0.6);
-  color: rgb(38, 78, 47);
-}
-
-.summary-trio > .deceased > .heading {
-  background-color: rgba(255, 98, 62, 0.6);
-  color: rgb(90, 35, 25);
+  display: block;
+  border-radius: 0.2em;
+  text-align: center;
+  padding-top: 1.4em;
+  font-weight: 600;
+  color: white;
+  font-size: 1.1em;
+  padding-bottom: 0.5em;
+  background-color: rgba(0, 0, 0, 0.171);
+  border-radius: 0.34rem 0.34rem 0.7em 0.7em;
 }
 
 .summary-trio > * > .total {
+  display: block;
   text-align: center;
-  font-size: 1.5rem;
+  margin: 0.6em 0.2em;
+  font-size: 1.6em;
 }
 
 .summary-trio > * > .new {
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 1.3em;
   font-weight: 500;
-  margin-top: 0.4rem;
+  margin-top: 0.4em;
   position: relative;
 }
-
 .summary-trio > * > .new > .plus {
-  font-size: 0.7rem;
+  font-size: 0.5em;
   position: relative;
   top: -0.5rem;
-  color: rgba(255, 255, 255, 0.644);
+  filter: opacity(0.7);
   left: 0rem;
   padding: 0.1rem;
 }
 
+.graph-container {
+  margin: 1em 0;
+  padding: 0.4em;
+  background-color: black;
+  border-radius: 0.7em;
+  padding-bottom: 0.8em;
+}
+
 .top-16-countries-list {
-  padding: 0.2em;
-  margin: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  font-size: 0.91rem;
+  margin: 1em 0;
+  text-align: center;
 }
 
 .top-16-countries-list > h1 {
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 1.7em;
   margin-bottom: 0.3em;
 }
 
-.top-16-countries-list > div {
+.top-16-countries-list > ul {
   display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+}
+
+.top-16-countries-list > ul > div {
+  display: flex;
+  flex-wrap: nowrap;
   flex-direction: row;
   justify-content: space-between;
+  margin: 0.1em 0.2em;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0em;
+  left: 0em;
+  color: blue;
+  background-color: black;
+  padding: 0.5em;
+  border-top-right-radius: 1em;
+  opacity: 0.2;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.footer > a {
+  text-decoration: none;
 }
 
 .country-list {
   padding: 0.7rem;
 }
-
 .country-list > .country-dropdown {
   appearance: none;
   width: 100%;
@@ -182,71 +209,4 @@ option {
   background: #171717;
   padding: 0.3rem;
   border-radius: 0.3rem;
-} */
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "Source Sans Pro", sans-serif;
-  color: #eeeeee;
-}
-
-html {
-  background-color: #121212;
-}
-
-.main-heading,
-.main-subtitle {
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.main-heading {
-  margin: 0.3em;
-  margin-bottom: 0.1em;
-}
-
-.main-subtitle {
-  margin: 0.2em;
-  font-size: 1em;
-}
-
-a {
-  color: rgb(255, 145, 0);
-}
-
-.main-container {
-  margin: 0.4em;
-}
-
-.main-panel {
-  display: flex;
-  margin: 0.2em;
-  flex-wrap: wrap;
-}
-
-.main-panel > .global-summary {
-  flex: 1;
-}
-
-.main-panel > .top-16-countries-list {
-  flex: 1;
-}
-
-.global-summary {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  margin: 0.2em;
-}
-
-.global-summary > .summary-trio {
-  flex: 1;
-}
-
-.global-summary > .graph-container {
-  flex: 1;
-  padding: 0.1em;
-  height: 400px;
 }

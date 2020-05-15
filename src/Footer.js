@@ -9,12 +9,11 @@ class Footer extends Component {
   render() {
     return (
       <div className="footer">
-        <h4 className="main-subtitle">
-          <a href="https://github.com/Suraj-Gov/covid-19-stats">
+        <p className="main-subtitle">
+          <a href="https://github.com/Suraj-Gov/covid-19-stats/tree/master">
             Link to the repo
           </a>
-        </h4>
-        <h4 className="main-subtitle">More features coming soon!</h4>
+        </p>
       </div>
     );
   }

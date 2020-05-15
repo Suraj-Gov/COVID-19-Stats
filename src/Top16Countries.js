@@ -6,6 +6,7 @@ class Top16Countries extends Component {
     this.state = {
       countryList: props.data,
       top16Countries: null,
+      detectedCountry: props.country,
     };
     this.calcTop16Countries = this.calcTop16Countries.bind(this);
   }
@@ -37,10 +38,17 @@ class Top16Countries extends Component {
           {this.state.top16Countries.map((country) => {
             return (
               <ul key={country.Country}>
-                <span className="country-name">{country.Country}</span>
-                <span className="case-count">
-                  {country.TotalConfirmed} cases
-                </span>
+                <div>
+                  <span className="country-name">
+                    {this.state.detectedCountry == country.CountryCode
+                      ? `📍  `
+                      : ""}
+                    {country.Country}
+                  </span>
+                  <span className="case-count">
+                    {country.TotalConfirmed} cases
+                  </span>
+                </div>
               </ul>
             );
           })}

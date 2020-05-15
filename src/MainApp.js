@@ -57,7 +57,7 @@ class MainApp extends Component {
         <div className="main-panel">
           <h1>
             {this.state.error != null
-              ? `${this.state.error.message}. Try reloading.`
+              ? `🙄 ${this.state.error.message}. Try reloading.`
               : "LOADING"}
           </h1>
         </div>
@@ -69,8 +69,11 @@ class MainApp extends Component {
             <SummaryTrio data={this.state.globalSummary} />
             <Graph Country={this.state.countryProv} />
           </div>
-          <Top16Countries data={this.state.countryList} />
-          {/* <Dropdown data={this.state.countryList} /> */}
+          <Top16Countries
+            data={this.state.countryList}
+            country={this.state.countryProv}
+          />
+          <Dropdown data={this.state.countryList} />
         </div>
       );
   }

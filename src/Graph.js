@@ -38,12 +38,12 @@ class Graph extends Component {
             labels: timeStamps,
             datasets: [
               {
-                label: "Confirmed Cases",
+                label: `Confirmed Cases - ${this.state.countryProv}`,
                 fill: false,
                 lineTension: 1,
                 backgroundColor: "",
                 borderColor: "#3e95cd",
-                borderWidth: 2,
+                borderWidth: 3.5,
                 data: cases,
                 pointRadius: 0,
               },
@@ -64,22 +64,14 @@ class Graph extends Component {
       return (
         <div className="graph-container">
           <Line
+            height={300}
             data={this.state.graphData}
             options={{
-              maintainAspectRatio: false,
               title: {
                 display: true,
+                fontFamily: "Fira Sans",
                 text: "Cases in your country",
                 fontSize: 20,
-              },
-              scales: {
-                yAxes: [
-                  {
-                    ticks: {
-                      display: false,
-                    },
-                  },
-                ],
               },
             }}
           />
