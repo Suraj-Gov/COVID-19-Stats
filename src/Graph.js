@@ -38,7 +38,7 @@ class Graph extends Component {
             labels: timeStamps,
             datasets: [
               {
-                label: `Confirmed Cases - ${this.state.countryProv}`,
+                label: `Confirmed Cases - ${cases[cases.length - 1]}`,
                 fill: false,
                 lineTension: 1,
                 backgroundColor: "",

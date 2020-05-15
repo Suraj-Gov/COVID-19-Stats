@@ -16,8 +16,7 @@ class Top16Countries extends Component {
   }
 
   calcTop16Countries() {
-    const countryList = this.state.countryList;
-    const orderedCountries = countryList.sort((a, b) => {
+    const orderedCountries = this.state.countryList.sort((a, b) => {
       if (a.TotalConfirmed > b.TotalConfirmed) {
         return -1;
       } else return 1;
@@ -40,12 +39,15 @@ class Top16Countries extends Component {
               <ul key={country.Country}>
                 <div>
                   <span className="country-name">
-                    {this.state.detectedCountry == country.CountryCode
+                    {this.state.detectedCountry === country.CountryCode
                       ? `📍  `
                       : ""}
                     {country.Country}
                   </span>
                   <span className="case-count">
+                    {this.state.detectedCountry === country.CountryCode
+                      ? `👉  `
+                      : ""}
                     {country.TotalConfirmed} cases
                   </span>
                 </div>

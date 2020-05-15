@@ -178,7 +178,7 @@ html {
   flex-wrap: nowrap;
   flex-direction: row;
   justify-content: space-between;
-  margin: 0.1em 0.2em;
+  margin: 0.2em 0.2em;
 }
 
 .footer {
@@ -209,4 +209,13 @@ html {
   background: #171717;
   padding: 0.3rem;
   border-radius: 0.3rem;
+}
+
+.country-list > h3 {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  text-transform: uppercase;
+  padding: 1em;
+  font-size: 1em;
 }

@@ -12,13 +12,17 @@ class CountryTrio extends Component {
     };
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.state.country != null)
-  //     if (this.state.country != prevState.country) {
-  //       console.log(prevState, this.state);
-
-  //     }
-  // }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.country !== this.props.country) {
+      this.setState({
+        country: this.props.country,
+        continent: this.props.continent,
+        population: this.props.population,
+        subregion: this.props.subregion,
+        language: this.props.language,
+      });
+    }
+  }
 
   render() {
     // if (this.state.country == null || this.state.isLoaded == false) {

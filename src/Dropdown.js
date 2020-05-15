@@ -6,6 +6,7 @@ class Dropdown extends Component {
     super(props);
     this.state = {
       countryList: props.data,
+      constCountryList: null,
       continent: null,
       population: null,
       subregion: null,
@@ -17,7 +18,7 @@ class Dropdown extends Component {
 
   handleCountryChange(event) {
     const { value } = event.target;
-    if (value == "no-select") {
+    if (value === "no-select") {
       this.setState({
         continent: null,
         population: null,
@@ -27,28 +28,25 @@ class Dropdown extends Component {
       });
     } else {
       let selectedCountry = this.state.countryList.filter((country) => {
-        if (country.Slug == value) {
+        if (country.Slug === value) {
           return country;
         }
       });
       selectedCountry = selectedCountry[0];
-      {
-        fetch(
-          `https://restcountries.eu/rest/v2/alpha/${selectedCountry.CountryCode}`
-        )
-          .then((res) => res.json())
-          .then((resJSON) => {
-            console.log();
-            console.log(resJSON);
-            this.setState({
-              continent: resJSON.region,
-              population: resJSON.population,
-              subregion: resJSON.subregion,
-              language: resJSON.languages[0].name,
-              selectedCountry: selectedCountry,
-            });
+      fetch(
+        `https://restcountries.eu/rest/v2/alpha/${selectedCountry.CountryCode}`
+      )
+        .then((res) => res.json())
+        .then((resJSON) => {
+          console.log();
+          this.setState({
+            continent: resJSON.region,
+            population: resJSON.population,
+            subregion: resJSON.subregion,
+            language: resJSON.languages[0].name,
+            selectedCountry: selectedCountry,
           });
-      }
+        });
     }
   }
 
@@ -75,7 +73,11 @@ class Dropdown extends Component {
             language={this.state.language}
           />
         ) : null}
-        <h1>{this.state.selectedCountry == null ? "null" : "no"}</h1>
+        <h3>
+          {this.state.selectedCountry == null
+            ? "Select a country to view it's stats"
+            : ""}
+        </h3>
       </div>
     );
   }
