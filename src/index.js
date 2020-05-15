@@ -2,26 +2,24 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 // import "./normalize.css";
-import Summary from "./Summary";
+import Header from "./Header";
+import MainApp from "./MainApp";
+import Footer from "./Footer";
 
-const Main = () => {
-  return (
-    <div className="main-container">
-      <h1 className="main-heading">COVID-19 Stats</h1>
-      <h4 className="main-subtitle">
-        A stats webapp that&#39;s updated automatically.
-      </h4>
-      <Summary />
-      <div className="footer">
-        <h4 className="main-subtitle">
-          <a href="https://github.com/Suraj-Gov/covid-19-stats">
-            Link to the repo
-          </a>
-        </h4>
-        <h4 className="main-subtitle">More features coming soon!</h4>
+class Main extends React.Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
+  render() {
+    return (
+      <div className="main-container">
+        <Header />
+        <MainApp />
+        <Footer />
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 ReactDOM.render(<Main />, document.getElementById("root"));

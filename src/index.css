@@ -1,4 +1,4 @@
-* {
+/* * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -28,7 +28,7 @@ option {
   margin-top: 0.5em;
 }
 
-.summary-container {
+.main-panel {
   position: relative;
   width: 90vw;
   height: 100%;
@@ -42,17 +42,18 @@ option {
   flex-wrap: wrap;
 }
 
-.summary-container > h1 {
+.main-panel > h1 {
   margin: 4.5rem auto;
+  padding: 0 1em;
   text-align: center;
   text-transform: uppercase;
 }
 
-.summary-container > .summary-trio {
+.main-panel > .summary-trio {
   flex: 1;
 }
 
-.summary-container > .country-list {
+.main-panel > .top-16-countries-list {
   flex: 1;
 }
 
@@ -62,6 +63,8 @@ option {
   padding: 0.5rem;
   animation-name: fade-in;
   animation-duration: 1s;
+  margin: 0 inherit;
+  text-align: center;
   animation-timing-function: cubic-bezier(0.42, 0.04, 0, 0.99);
 }
 
@@ -78,7 +81,8 @@ option {
   margin: 0.2rem;
   border-radius: 0.4rem;
   flex: 1;
-  height: 10rem;
+  max-height: 15em;
+  max-width: 8em;
   transition: 0.5s;
   transition-timing-function: cubic-bezier(0.42, 0.04, 0, 0.99);
 }
@@ -88,15 +92,15 @@ option {
 }
 
 .summary-trio > .confirmed {
-  background-color: rgba(255, 179, 15, 0.63);
+  background-color: rgb(204, 139, 0);
 }
 
 .summary-trio > .recovered {
-  background-color: rgba(252, 222, 156, 0.623);
+  background-color: rgb(84, 173, 103);
 }
 
 .summary-trio > .deceased {
-  background-color: rgba(213, 87, 59, 0.637);
+  background-color: rgb(165, 63, 40);
 }
 
 .summary-trio > * > .heading {
@@ -109,18 +113,18 @@ option {
 }
 
 .summary-trio > .confirmed > .heading {
-  background-color: rgba(255, 179, 15, 0.8);
-  color: rgb(77, 55, 8);
+  background-color: rgba(255, 230, 0, 0.6);
+  color: rgb(112, 77, 0);
 }
 
 .summary-trio > .recovered > .heading {
-  background-color: rgba(252, 222, 156, 0.803);
-  color: rgb(94, 82, 57);
+  background-color: rgba(119, 255, 149, 0.6);
+  color: rgb(38, 78, 47);
 }
 
 .summary-trio > .deceased > .heading {
-  background-color: rgba(213, 87, 59, 0.807);
-  color: rgb(56, 23, 16);
+  background-color: rgba(255, 98, 62, 0.6);
+  color: rgb(90, 35, 25);
 }
 
 .summary-trio > * > .total {
@@ -145,6 +149,28 @@ option {
   padding: 0.1rem;
 }
 
+.top-16-countries-list {
+  padding: 0.2em;
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-size: 0.91rem;
+}
+
+.top-16-countries-list > h1 {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.7em;
+  margin-bottom: 0.3em;
+}
+
+.top-16-countries-list > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .country-list {
   padding: 0.7rem;
 }
@@ -156,4 +182,71 @@ option {
   background: #171717;
   padding: 0.3rem;
   border-radius: 0.3rem;
+} */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #eeeeee;
+}
+
+html {
+  background-color: #121212;
+}
+
+.main-heading,
+.main-subtitle {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.main-heading {
+  margin: 0.3em;
+  margin-bottom: 0.1em;
+}
+
+.main-subtitle {
+  margin: 0.2em;
+  font-size: 1em;
+}
+
+a {
+  color: rgb(255, 145, 0);
+}
+
+.main-container {
+  margin: 0.4em;
+}
+
+.main-panel {
+  display: flex;
+  margin: 0.2em;
+  flex-wrap: wrap;
+}
+
+.main-panel > .global-summary {
+  flex: 1;
+}
+
+.main-panel > .top-16-countries-list {
+  flex: 1;
+}
+
+.global-summary {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 0.2em;
+}
+
+.global-summary > .summary-trio {
+  flex: 1;
+}
+
+.global-summary > .graph-container {
+  flex: 1;
+  padding: 0.1em;
+  height: 400px;
 }

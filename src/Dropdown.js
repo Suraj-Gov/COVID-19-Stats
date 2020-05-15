@@ -1,25 +1,40 @@
-import React, { useState, useEffect } from "react";
-import SummaryTrio from "./SummaryTrio";
+import React, { Component } from "react";
+// import CountryTrio from "./CountryTrio";
 
-const Dropdown = (props) => {
-  const [country, setCountry] = useState("");
+class Dropdown extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedCountry: null,
+      countryList: props.data,
+    };
+    this.handleCountryChange = this.handleCountryChange.bind(this);
+  }
 
-  return (
-    <div className="country-list">
-      <select
-        className="country-dropdown"
-        onChange={(e) => setCountry(e.target.value)}
-      >
-        <option>Select Country</option>
-        {props.CountryList.map((country) => (
-          <option key={country.CountryCode} value={country.Slug}>
-            {country.Country}
-          </option>
-        ))}
-      </select>
-      <h1>{country}</h1>
-    </div>
-  );
-};
+  handleCountryChange(event) {
+    const { value: key } = event.target;
+    this.setState({
+      selectedCountry: key,
+    });
+  }
+
+  render() {
+    return (
+      <div className="country-list">
+        <select
+          className="country-dropdown"
+          onChange={(event) => this.handleCountryChange(event)}
+        >
+          <option>Select Country</option>
+          {this.state.countryList.map((country) => (
+            <option key={country.CountryCode} value={country.Slug}>
+              {country.Country}
+            </option>
+          ))}
+        </select>
+      </div>
+    );
+  }
+}
 
 export default Dropdown;
