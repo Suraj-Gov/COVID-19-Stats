@@ -18,13 +18,16 @@ class Graph extends Component {
     this.getCountryCaseStats();
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.givenCountry !== this.props.givenCountry) {
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.givenCountry !== this.props.givenCountry) {
+      console.log("Was " + this.state.givenCountry.Country);
       this.setState({
         givenCountry: this.props.givenCountry,
         isLoaded: false,
         graphData: {},
+        countryProv: undefined,
       });
+      console.log("Now it's  " + this.state.givenCountry.Country);
       this.getCountryCaseStats();
     }
   }
@@ -47,6 +50,7 @@ class Graph extends Component {
     )
       .then((res) => res.json())
       .then((resJSON) => {
+        console.log("fetched " + resJSON[0].Country);
         const timeStamps = resJSON.map((i) => {
           let iDate = new Date(Date.parse(i.Date)).toString();
           return iDate.slice(4, 10);
