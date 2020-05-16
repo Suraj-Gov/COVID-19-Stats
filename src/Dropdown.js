@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import CountryTrio from "./CountryTrio";
+import Graph from "./Graph";
 
 class Dropdown extends Component {
   constructor(props) {
     super(props);
     this.state = {
       countryList: props.data,
-      constCountryList: null,
       continent: null,
       population: null,
       subregion: null,
@@ -14,6 +14,14 @@ class Dropdown extends Component {
       selectedCountry: null,
     };
     this.handleCountryChange = this.handleCountryChange.bind(this);
+  }
+
+  componentDidUpdate() {
+    this.state.countryList.sort((a, b) => {
+      if (a.Country > b.Country) {
+        return 1;
+      } else return -1;
+    });
   }
 
   handleCountryChange(event) {
@@ -65,13 +73,16 @@ class Dropdown extends Component {
           ))}
         </select>
         {this.state.selectedCountry != null ? (
-          <CountryTrio
-            country={this.state.selectedCountry}
-            continent={this.state.continent}
-            population={this.state.population}
-            subregion={this.state.subregion}
-            language={this.state.language}
-          />
+          <div className="selected-country-div">
+            <CountryTrio
+              country={this.state.selectedCountry}
+              continent={this.state.continent}
+              population={this.state.population}
+              subregion={this.state.subregion}
+              language={this.state.language}
+            />
+            <Graph givenCountry={this.state.selectedCountry} />
+          </div>
         ) : null}
         <h3>
           {this.state.selectedCountry == null

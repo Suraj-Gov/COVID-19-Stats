@@ -34,19 +34,25 @@ class MainApp extends Component {
         this.setState({
           globalSummary: resJSON.Global,
           countryList: resJSON.Countries,
-          isLoaded: true,
         });
+        fetch("http://ip-api.com/json")
+          .then((res) => res.json())
+          .then((res) => {
+            const code = res.countryCode;
+            const slug = this.state.countryList.filter((country) => {
+              if (country.CountryCode === code) {
+                return country.Slug;
+              }
+            });
+            this.setState({
+              countryProv: slug[0].Slug,
+              isLoaded: true,
+            });
+          });
       })
       .catch((err) => {
         this.setState({
           error: err,
-        });
-      });
-    fetch("http://ip-api.com/json")
-      .then((res) => res.json())
-      .then((res) => {
-        this.setState({
-          countryProv: res.countryCode,
         });
       });
   }

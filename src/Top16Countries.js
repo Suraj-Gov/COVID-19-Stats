@@ -16,12 +16,65 @@ class Top16Countries extends Component {
   }
 
   calcTop16Countries() {
-    const orderedCountries = this.state.countryList.sort((a, b) => {
+    let orderedCountries = this.state.countryList;
+    orderedCountries.sort((a, b) => {
       if (a.TotalConfirmed > b.TotalConfirmed) {
         return -1;
       } else return 1;
     });
     const top16Countries = orderedCountries.slice(0, 16);
+    top16Countries.map((country) => {
+      switch (country.Country) {
+        case "Iran, Islamic Republic of":
+          country.Country = "Iran";
+          break;
+        case "United States of America":
+          country.Country = "USA";
+          break;
+        case "Holy See (Vatican City State)":
+          country.Country = "Vatican City";
+          break;
+        case "Macedonia, Republic of":
+          country.Country = "Macedonia";
+          break;
+        case "Taiwan, Republic of China":
+          country.Country = "Taiwan";
+          break;
+        case "Tanzania, United Republic of":
+          country.Country = "Tanzania";
+          break;
+        case "Venezuela (Bolivarian Republic)":
+          country.Country = "Venezuela";
+          break;
+      }
+      return country;
+    });
+    this.state.countryList.map((country) => {
+      switch (country.Country) {
+        case "Iran, Islamic Republic of":
+          country.Country = "Iran";
+          break;
+        case "United States of America":
+          country.Country = "USA";
+          break;
+        case "Holy See (Vatican City State)":
+          country.Country = "Vatican City";
+          break;
+        case "Macedonia, Republic of":
+          country.Country = "Macedonia";
+          break;
+        case "Taiwan, Republic of China":
+          country.Country = "Taiwan";
+          break;
+        case "Tanzania, United Republic of":
+          country.Country = "Tanzania";
+          break;
+        case "Venezuela (Bolivarian Republic)":
+          country.Country = "Venezuela";
+          break;
+      }
+      return country;
+    });
     this.setState({
       top16Countries: top16Countries,
     });
@@ -46,7 +99,7 @@ class Top16Countries extends Component {
                   </span>
                   <span className="case-count">
                     {this.state.detectedCountry === country.CountryCode
-                      ? `👉  `
+                      ? `👉   `
                       : ""}
                     {country.TotalConfirmed} cases
                   </span>
