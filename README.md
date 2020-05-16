@@ -6,9 +6,11 @@ Country flags are fetched from countryflags.io with their API fetch.
 Continents are detected by the Country.js script.
 
 <b>Future additions:</b>
-A graph to visualize data presented.
-A country compare feature to compare stats and data of two countries.
-Option to view data from any country.
-
+<ul>
+  <li>A graph to visualize data presented. DONE!</li>
+  <li>A country compare feature to compare stats and data of two countries.</li>
+  <li>Option to view data from any country. DONE!</li>
+  <li>Add TypeAhead for countries</li>
+</ul>
 <br /> <br />
 Created with ♥ & React with GitHub.
