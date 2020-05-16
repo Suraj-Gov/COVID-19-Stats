@@ -71,6 +71,12 @@ class MainApp extends Component {
     } else
       return (
         <div className="main-panel">
+          <h3>
+            (You are in{" "}
+            {this.state.countryProv.charAt(0).toUpperCase() +
+              this.state.countryProv.slice(1)}
+            )
+          </h3>
           <div className="global-summary">
             <SummaryTrio data={this.state.globalSummary} />
             <Graph Country={this.state.countryProv} />

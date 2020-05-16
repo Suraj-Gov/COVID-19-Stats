@@ -17,7 +17,7 @@ html {
 .top-header {
   display: block;
   margin: 0 auto;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
   text-align: center;
 }
 
@@ -73,6 +73,14 @@ html {
   align-items: center;
   text-align: center;
   padding: 5em 0 15em 0;
+}
+
+.main-panel > h3 {
+  text-align: center;
+  margin: 2em;
+  display: block;
+  margin-top: 0;
+  font-size: 0.9em;
 }
 
 .main-panel > * {

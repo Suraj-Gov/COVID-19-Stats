@@ -92,15 +92,11 @@ class Top16Countries extends Component {
               <ul key={country.Country}>
                 <div>
                   <span className="country-name">
-                    {this.state.detectedCountry === country.CountryCode
-                      ? `📍  `
-                      : ""}
+                    {this.state.detectedCountry === country.Slug ? `📍  ` : ""}
                     {country.Country}
                   </span>
                   <span className="case-count">
-                    {this.state.detectedCountry === country.CountryCode
-                      ? `👉   `
-                      : ""}
+                    {this.state.detectedCountry === country.Slug ? `👉   ` : ""}
                     {country.TotalConfirmed} cases
                   </span>
                 </div>
