@@ -15,6 +15,9 @@ class MainApp extends Component {
       error: null,
       countryProv: "",
     };
+    this.fetchGlobalSummary = this.fetchGlobalSummary.bind(this);
+    this.locationFailed = this.locationFailed.bind(this);
+    this.setLocation = this.setLocation.bind(this);
   }
 
   componentDidMount() {
@@ -35,26 +38,43 @@ class MainApp extends Component {
           globalSummary: resJSON.Global,
           countryList: resJSON.Countries,
         });
-        fetch("http://ip-api.com/json")
-          .then((res) => res.json())
-          .then((res) => {
-            const code = res.countryCode;
-            const slug = this.state.countryList.filter((country) => {
-              if (country.CountryCode === code) {
-                return country.Slug;
-              }
-            });
-            this.setState({
-              countryProv: slug[0].Slug,
-              isLoaded: true,
-            });
-          });
+        window.navigator.geolocation.getCurrentPosition(
+          this.setLocation,
+          this.locationFailed
+        );
       })
       .catch((err) => {
         this.setState({
           error: err,
         });
       });
+  }
+
+  setLocation(position) {
+    const { latitude, longitude } = position.coords;
+    fetch(
+      `https://api.opencagedata.com/geocode/v1/json?key=ceca709d7d3449c1a51ed2a6f62e7daf&q=${latitude}%2C+${longitude}&pretty=1&no_annotations=1`
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        const code = res.results[0].components.country_code.toUpperCase();
+        const slug = this.state.countryList.filter((country) => {
+          if (country.CountryCode === code) {
+            return country.Slug;
+          }
+        });
+        this.setState({
+          countryProv: slug[0].Slug,
+          isLoaded: true,
+        });
+      });
+  }
+
+  locationFailed() {
+    this.setState({
+      countryProv: "india",
+      isLoaded: true,
+    });
   }
 
   render() {
