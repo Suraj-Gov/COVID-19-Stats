@@ -8,10 +8,11 @@ class CountryTrio extends Component {
       continent: props.continent,
       population: props.population,
       language: props.language,
+      //just states for the props passed down
     };
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if (prevProps.country !== this.props.country) {
       this.setState({
         country: this.props.country,
@@ -19,13 +20,11 @@ class CountryTrio extends Component {
         population: this.props.population,
         language: this.props.language,
       });
+      //if the selected country is changed, the data is updated with the updated props
     }
   }
 
   render() {
-    // if (this.state.country == null || this.state.isLoaded == false) {
-    //   return <h3>Select a country to get it's summary</h3>;
-    // } else {
     return (
       <div className="country-trio">
         <div className="country-details">
@@ -37,6 +36,8 @@ class CountryTrio extends Component {
                 "/flat/64.png"
               }
               alt={this.state.country.Country}
+              // here the img of the given country's flag is set
+              // pretty nifty
             />
           </div>
           <p className="name">{this.state.country.Country}</p>
@@ -44,7 +45,7 @@ class CountryTrio extends Component {
           <p className="language">Language: {this.state.language}</p>
           <p className="population">Population: {this.state.population}</p>
           <p className="affected">
-            Affected Population:
+            Affected Population:{" "}
             {(
               (this.state.country.TotalConfirmed / this.state.population) *
               100
@@ -82,5 +83,7 @@ class CountryTrio extends Component {
     );
   }
 }
+
+//this is similar to the global stats thing, but this one displays more information and is specified to the country
 
 export default CountryTrio;

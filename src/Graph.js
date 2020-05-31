@@ -1,46 +1,49 @@
 import React, { Component } from "react";
 import { Line } from "react-chartjs-2";
+//this uses the chartjs module
+//it's cool
 
 class Graph extends Component {
   constructor(props) {
     super(props);
     this.state = {
       countryProv: props.Country,
+      //this is the country given from the current user location
       givenCountry: props.givenCountry,
+      //this is the country given from the dropdown
       isLoaded: false,
+      //state for data status
       graphData: {},
     };
 
     this.getCountryCaseStats = this.getCountryCaseStats.bind(this);
+    //just binding the function
   }
 
   componentDidMount() {
     this.getCountryCaseStats();
   }
+  //once the component is mounted, get the cases for the country set
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.givenCountry !== this.props.givenCountry) {
-      console.log("Was " + this.state.givenCountry.Country);
+      //if the country prop is changed for the dropdown given country, then this code block runs
       this.setState({
         givenCountry: this.props.givenCountry,
+        //the new dropdown country is set here
         isLoaded: false,
+        //the loaded status is falsified, because the graph data is changed
         graphData: {},
+        //graph data is set to empty
         countryProv: undefined,
+        //the countryProv from the user location is set to undefined
       });
-      console.log("Now it's  " + this.state.givenCountry.Country);
       this.getCountryCaseStats();
+      //fetch the country details for the new selected country
     }
   }
 
   getCountryCaseStats() {
-    // console.log(
-    //   `https://api.covid19api.com/dayone/country/${
-    //     this.state.countryProv === undefined
-    //       ? this.state.givenCountry.Slug
-    //       : this.state.countryProv
-    //   }`
-    // );
-
     fetch(
       `https://api.covid19api.com/dayone/country/${
         this.state.countryProv === undefined
@@ -48,34 +51,44 @@ class Graph extends Component {
           : this.state.countryProv
       }`
     )
+      //here it checks if the given country is the located country or the dropdown country,
+      //and then fetches the json for the defined country
       .then((res) => res.json())
       .then((resJSON) => {
-        console.log("fetched " + resJSON[0].Country);
         const timeStamps = resJSON.map((i) => {
           let iDate = new Date(Date.parse(i.Date)).toString();
           return iDate.slice(4, 10);
         });
+        //timestamps are taken from the country's data,
+        //its converted to Date object, then stringified,
+        //the stringified date is sent to the array,
+        //the array date elements are in the form of month_date,
+        //so to do this, the date string is just sliced
         const confirmedCases = resJSON.map((i) => {
           return i.Confirmed;
         });
+        //confirmed cases are just mapped on to an array
         const activeCases = resJSON.map((i) => {
           return i.Active;
         });
+        //acitve cases are just mapped on to an array
         const recoveredCases = resJSON.map((i) => {
           return i.Recovered;
         });
+        //recovered cases are just mapped on to an array
         const deceasedCases = resJSON.map((i) => {
           return i.Deaths;
         });
+        //deceased cases are just mapped on to an array
         this.setState({
           isLoaded: true,
+          //after all the data is retrieved from the json, the loading state is set to true
           graphData: {
             labels: timeStamps,
+            //the x axis labels
             datasets: [
               {
-                label: `Confirmed Cases - ${
-                  confirmedCases[confirmedCases.length - 1]
-                }`,
+                label: `Confirmed Cases`,
                 fill: false,
                 lineTension: 1,
                 backgroundColor: "",
@@ -85,7 +98,7 @@ class Graph extends Component {
                 pointRadius: 0,
               },
               {
-                label: `Active Cases - ${activeCases[activeCases.length - 1]}`,
+                label: `Active Cases`,
                 fill: false,
                 lineTension: 1,
                 backgroundColor: "",
@@ -95,9 +108,7 @@ class Graph extends Component {
                 pointRadius: 0,
               },
               {
-                label: `Recovered Cases - ${
-                  recoveredCases[recoveredCases.length - 1]
-                }`,
+                label: `Recovered Cases`,
                 fill: false,
                 lineTension: 1,
                 backgroundColor: "",
@@ -107,9 +118,7 @@ class Graph extends Component {
                 pointRadius: 0,
               },
               {
-                label: `Deceased Cases - ${
-                  deceasedCases[deceasedCases.length - 1]
-                }`,
+                label: `Deceased Cases`,
                 fill: false,
                 lineTension: 1,
                 backgroundColor: "",
@@ -118,6 +127,9 @@ class Graph extends Component {
                 data: deceasedCases,
                 pointRadius: 0,
               },
+              //the graph lines are drawn here, with the standard labels and the colors for the lines
+              //no fill colors, borderwidth is set to a small value, except for confirmed cases which is 3.5 for it
+              //no points on the lines because it doesn't look good
             ],
           },
         });
@@ -153,6 +165,7 @@ class Graph extends Component {
                     : this.state.countryProv.charAt(0).toUpperCase() +
                       this.state.countryProv.slice(1)
                 }`,
+                //the located country is set or the selected country is set
                 fontColor: "#eeeeee",
 
                 fontSize: 20,
@@ -173,6 +186,7 @@ class Graph extends Component {
                         if (value === 10) return "10";
                         if (value === 0) return "0";
                         return null;
+                        //y axis value ticks for log graph type
                       },
                     },
                   },
@@ -184,5 +198,7 @@ class Graph extends Component {
       );
   }
 }
+
+//the sizing of the graph component is a bit tough to understand and implement for both mobiles and desktops
 
 export default Graph;

@@ -17,8 +17,11 @@ class Main extends React.Component {
     return (
       <div className="main-container">
         <Header />
+        {/* the upper header element */}
         <MainApp />
+        {/* the main guts of the webapp */}
         <Footer />
+        {/* just a normal footer, linking to the repo */}
       </div>
     );
   }

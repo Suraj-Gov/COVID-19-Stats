@@ -6,6 +6,7 @@ class SummaryTrio extends Component {
     this.state = {
       globalStats: props.data,
     };
+    //only needs the globalStats
   }
   render() {
     return (
@@ -38,5 +39,7 @@ class SummaryTrio extends Component {
     );
   }
 }
+
+//it just takes in the data from the globalStats state passed from the parent component
 
 export default SummaryTrio;

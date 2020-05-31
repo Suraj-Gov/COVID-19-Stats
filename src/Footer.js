@@ -19,4 +19,6 @@ class Footer extends Component {
   }
 }
 
+//self explainatory footer component
+
 export default Footer;
