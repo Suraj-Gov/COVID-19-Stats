@@ -45,7 +45,7 @@ class Graph extends Component {
 
   getCountryCaseStats() {
     fetch(
-      `https://api.covid19api.com/dayone/country/${
+      `https://api.covid19api.com/total/dayone/country/${
         this.state.countryProv === undefined
           ? this.state.givenCountry.Slug
           : this.state.countryProv
@@ -136,11 +136,27 @@ class Graph extends Component {
       });
   }
 
+  maxYSize(data) {
+    const max = data[data.length - 1];
+    for (let i = 1; i < max; i = i * 10) {
+      if (i < max && max < i * 10) {
+        console.log(i);
+        return i * 10;
+      }
+    }
+  }
+
   render() {
     if (this.state.isLoaded === false) {
       return (
         <div className="graph-container">
           <h1>Loading</h1>
+        </div>
+      );
+    } else if (this.state.graphData.datasets[0].data == []) {
+      return (
+        <div className="graph-container">
+          <h1>Whoops! No data found</h1>
         </div>
       );
     } else
@@ -176,8 +192,9 @@ class Graph extends Component {
                     type: "logarithmic",
                     ticks: {
                       min: 0,
-                      max: 1000000,
-                      callback: function (value, index, values) {
+                      max: this.maxYSize(this.state.graphData.datasets[0].data),
+                      callback: function (value) {
+                        if (value === 10000000) return "10M";
                         if (value === 1000000) return "1M";
                         if (value === 100000) return "100K";
                         if (value === 10000) return "10K";

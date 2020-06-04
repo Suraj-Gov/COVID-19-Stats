@@ -87,6 +87,7 @@ class Dropdown extends Component {
         <select
           className="country-dropdown"
           onChange={(event) => this.handleCountryChange(event)}
+          onBlur={(event) => this.handleCountryChange(event)}
         >
           <option value="no-select">Select Country</option>
           {/* this is valued as no-select to allow the user to unselect their country choice */}

@@ -25,6 +25,9 @@ class Top16Countries extends Component {
     this.calcTop16Countries();
     //when component is on page, calculate the top countries
   }
+  numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
 
   calcTop16Countries() {
     let orderedCountries = this.state.countryList;
@@ -35,8 +38,10 @@ class Top16Countries extends Component {
       } else return 1;
     });
     //sorts the countryList based on the totalConfirmed values of the country
-    const top16Countries = orderedCountries.slice(0, 16);
-    //takes the first 16 countries from the sorted array
+    const top16Countries = orderedCountries;
+    //was: takes the first 16 countries from the sorted array
+    //now: just gives the whole countryList
+    //because I added a scrollable div
     top16Countries.map((country) => {
       switch (country.Country) {
         case "Iran, Islamic Republic of":
@@ -111,23 +116,29 @@ class Top16Countries extends Component {
       return (
         <div className="top-16-countries-list">
           <h1>Top Countries Affected</h1>
-          {this.state.top16Countries.map((country) => {
-            return (
-              <ul key={country.Country}>
-                <div>
-                  <span className="country-name">
-                    {this.state.detectedCountry === country.Slug ? `📍  ` : ""}
-                    {country.Country}
-                  </span>
-                  <span className="case-count">
-                    {this.state.detectedCountry === country.Slug ? `👉   ` : ""}
-                    {country.TotalConfirmed} cases
-                  </span>
-                  {/* the emojis just show the user's current location, if their country is in the top list */}
-                </div>
-              </ul>
-            );
-          })}
+          <div className="top-country-scroll-list">
+            {this.state.top16Countries.map((country, index) => {
+              return (
+                <ul key={country.Country}>
+                  <div
+                    className={
+                      this.state.detectedCountry === country.Slug
+                        ? "current-location"
+                        : ""
+                    }
+                  >
+                    <span className="position">{index + 1}</span>
+                    <span className="country-name">{country.Country}</span>
+                    <span className="case-count">
+                      {this.numberWithCommas(country.TotalConfirmed)} cases
+                    </span>
+                    {/* the emojis just show the user's current location, if their country is in the top list */}
+                  </div>
+                </ul>
+              );
+            })}
+          </div>
+          <p>↕ Scroll to view more countries ↕</p>
         </div>
       );
     }

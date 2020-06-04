@@ -23,6 +23,9 @@ class CountryTrio extends Component {
       //if the selected country is changed, the data is updated with the updated props
     }
   }
+  numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
 
   render() {
     return (
@@ -43,7 +46,9 @@ class CountryTrio extends Component {
           <p className="name">{this.state.country.Country}</p>
           <p className="continent">{this.state.continent}</p>
           <p className="language">Language: {this.state.language}</p>
-          <p className="population">Population: {this.state.population}</p>
+          <p className="population">
+            Population: {this.numberWithCommas(this.state.population)}
+          </p>
           <p className="affected">
             Affected Population:{" "}
             {(
@@ -56,26 +61,32 @@ class CountryTrio extends Component {
         <div className="country-specific-stats">
           <div className="confirmed">
             <p className="heading">Confirmed</p>
-            <p className="total">{this.state.country.TotalConfirmed}</p>
+            <p className="total">
+              {this.numberWithCommas(this.state.country.TotalConfirmed)}
+            </p>
             <p className="new">
               <span className="plus">TODAY</span>
-              {this.state.country.NewConfirmed}
+              {this.numberWithCommas(this.state.country.NewConfirmed)}
             </p>
           </div>
           <div className="recovered">
             <p className="heading">Recovered</p>
-            <p className="total">{this.state.country.TotalRecovered}</p>
+            <p className="total">
+              {this.numberWithCommas(this.state.country.TotalRecovered)}
+            </p>
             <p className="new">
               <span className="plus">TODAY</span>
-              {this.state.country.NewRecovered}
+              {this.numberWithCommas(this.state.country.NewRecovered)}
             </p>
           </div>
           <div className="deceased">
             <p className="heading">Deceased</p>
-            <p className="total">{this.state.country.TotalDeaths}</p>
+            <p className="total">
+              {this.numberWithCommas(this.state.country.TotalDeaths)}
+            </p>
             <p className="new">
               <span className="plus">TODAY</span>
-              {this.state.country.NewDeaths}
+              {this.numberWithCommas(this.state.country.NewDeaths)}
             </p>
           </div>
         </div>
