@@ -140,7 +140,6 @@ class Graph extends Component {
     const max = data[data.length - 1];
     for (let i = 1; i < max; i = i * 10) {
       if (i < max && max < i * 10) {
-        console.log(i);
         return i * 10;
       }
     }

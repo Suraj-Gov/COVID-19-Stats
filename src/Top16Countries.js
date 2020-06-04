@@ -138,7 +138,7 @@ class Top16Countries extends Component {
               );
             })}
           </div>
-          <p>↕ Scroll to view more countries ↕</p>
+          <p>Scroll to view more countries</p>
         </div>
       );
     }

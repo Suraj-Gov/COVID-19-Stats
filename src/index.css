@@ -199,16 +199,23 @@ html {
 .top-16-countries-list > p {
   text-align: center;
   text-transform: uppercase;
-  margin-top: 1.5em;
+  padding-top: 1em;
   font-size: 0.7em;
+  background-color: rgba(0, 0, 0, 0.699);
+  padding-bottom: 1em;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
 }
 
 .top-country-scroll-list {
-  height: 18em;
+  height: 17em;
   overflow: scroll;
   /* -moz-box-shadow: inset 0 10px 20px #000000;
   -webkit-box-shadow: inset 0 10px 20px #000000; */
   box-shadow: inset 0px 15px 20px -10px black, inset 0px -15px 20px -10px black;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+  padding-top: 0.3em;
 }
 
 .top-country-scroll-list::-webkit-scrollbar {
@@ -402,10 +409,11 @@ ul > * {
 }
 
 .top-country-scroll-list > ul > .current-location {
-  background-color: rgba(0, 238, 255, 0.103);
+  background-color: rgba(255, 255, 255, 0.103);
   border-radius: 3em;
   width: 98%;
   padding: 0.2em 0.4em;
   margin: 0 auto;
-  border: 2px solid rgba(255, 255, 255, 0.199);
+  border: 2px solid rgba(255, 36, 36, 0.021);
+  backdrop-filter: opacity(20%);
 }
