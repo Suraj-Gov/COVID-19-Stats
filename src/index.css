@@ -48,10 +48,10 @@ html {
   .main-panel > * {
     margin: 1em;
   }
-  .main-panel {
+  /* .main-panel {
     flex-direction: column;
     margin: 0 30em;
-  }
+  } */
   .main-panel > .global-summary {
     flex-direction: row;
     justify-content: space-around;

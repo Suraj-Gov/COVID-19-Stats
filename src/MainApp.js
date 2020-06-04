@@ -117,13 +117,6 @@ class MainApp extends Component {
     } else
       return (
         <div className="main-panel">
-          <h3>
-            (You are in{" "}
-            {this.state.countryProv.charAt(0).toUpperCase() +
-              this.state.countryProv.slice(1)}
-            )
-            {/* the countryProv is all lowercase by default, this just capitalizes the first letter */}
-          </h3>
           <div className="global-summary">
             <SummaryTrio data={this.state.globalSummary} />
             {/* this is for the summary trio for global summary
