@@ -10,7 +10,9 @@ Continents are detected by the Country.js script.
   <li>A graph to visualize data presented. DONE!</li>
   <li>A country compare feature to compare stats and data of two countries.</li>
   <li>Option to view data from any country. DONE!</li>
-  <li>Add TypeAhead for countries</li>
+  <li>Stats prediction using interpolation</li>
 </ul>
+
+<a href="suraj-gov.github.io/covid-19-stats">Website</a>
 <br /> <br />
 Created with ♥ & React with GitHub.
