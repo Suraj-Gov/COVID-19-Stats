@@ -13,6 +13,6 @@ Continents are detected by the Country.js script.
   <li>Stats prediction using interpolation</li>
 </ul>
 
-<a href="suraj-gov.github.io/covid-19-stats">Website</a>
+<a href="https://suraj-gov.github.io/covid-19-stats">Website</a>
 <br /> <br />
 Created with ♥ & React with GitHub.
